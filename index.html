@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Viewport per layout responsive coerente sui dispositivi mobili -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roman Numeral Converter</title>
+
+    <!-- Stili principali -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Script con defer per non bloccare il parsing dell’HTML -->
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <!--
+      Controllo cambio tema (chiaro/scuro).
+      Implementato come <span> per evitare l’aspetto “button-like”,
+      ma con ruolo ARIA e supporto tastiera (tabindex).
+      Il contenuto (icona) viene aggiornato dinamicamente in script.js.
+    -->
+    <span
+      id="theme-toggle"
+      class="theme-icon"
+      role="button"
+      tabindex="0"
+      aria-label="Cambia tema"
+      title="Cambia tema"
+      >🌙</span
+    >
+
+    <!--
+      Contenuto principale: centrato verticalmente/orizzontalmente.
+      <main> fornisce un punto di riferimento semantico per i lettori di schermo.
+    -->
+    <main class="container">
+      <!-- Intestazione con titolo e sottotitolo descrittivo -->
+      <header class="header">
+        <h1 class="title">Roman Numeral Converter</h1>
+        <p class="subtitle">
+          Convert numbers from 1 to 3999 using subtractive notation.
+        </p>
+      </header>
+
+      <!--
+        Card con input e azione di conversione.
+        Gli id #number, #convert-btn, #output sono quelli richiesti dai test FCC.
+      -->
+      <section class="card" aria-labelledby="form-title">
+        <div class="row">
+          <!--
+            Campo numerico con vincoli (min/max/step) per guidare l’input.
+            inputmode="numeric" aiuta le tastiere virtuali su mobile.
+          -->
+          <input
+            id="number"
+            type="number"
+            class="input"
+            inputmode="numeric"
+            min="1"
+            max="3999"
+            step="1"
+            placeholder="Type a number (e.g. 86)"
+            aria-label="Number to convert"
+          />
+
+          <!--
+            Azione primaria: esegue la conversione.
+            Gestita da script.js (click + Enter su input).
+          -->
+          <button id="convert-btn" type="button" class="btn">Convert</button>
+        </div>
+
+        <!--
+          Area risultato. aria-live="polite" per annunciare aggiornamenti
+          senza interrompere la lettura corrente degli screen reader.
+        -->
+        <p id="output" class="result" aria-live="polite"></p>
+      </section>
+
+      <!--
+        Nota informativa: riepiloga le regole di notazione sottrattiva.
+        Posizionata sotto la card per non distrarre dall’azione primaria.
+      -->
+      <aside class="banner" role="note" aria-live="polite">
+        <p>
+          Uses standard Roman numerals: <em>IV</em>=4, <em>IX</em>=9,
+          <em>XL</em>=40, <em>XC</em>=90, <em>CD</em>=400, <em>CM</em>=900.
+        </p>
+      </aside>
+
+      <!--
+        Footer minimal: badge informativo sul range supportato.
+      -->
+      <footer class="footer">
+        <p class="badge">Range supported: 1–3999</p>
+      </footer>
+    </main>
+  </body>
+</html>
