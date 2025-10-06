@@ -1,4 +1,4 @@
-## Roman Numeral Converter
+# Roman Numeral Converter
 
 Questo progetto è stato realizzato come parte del percorso **"JavaScript Algorithms and Data Structures"** di [freeCodeCamp](https://www.freecodecamp.org/).
 
